@@ -10,12 +10,14 @@ import {TableModule} from 'primeng/table';
 import {TooltipModule} from 'primeng/tooltip';
 import { LacamentosPesquisaComponent } from './lacamentos-pesquisa/lacamentos-pesquisa.component';
 import { NavbarComponent } from './navbar/navbar.component';
+import { PessoasPesquisaComponent } from './pessoas-pesquisa/pessoas-pesquisa.component';
 
 @NgModule({
   declarations: [
     AppComponent,
     LacamentosPesquisaComponent,
-    NavbarComponent
+    NavbarComponent,
+    PessoasPesquisaComponent
   ],
   imports: [
     BrowserModule,
