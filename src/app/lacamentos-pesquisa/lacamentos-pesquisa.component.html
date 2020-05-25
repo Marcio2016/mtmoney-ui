@@ -39,11 +39,11 @@
               <tr>
                   <td>{{l.pessoa}}</td>
                   <td>{{l.descricao}}</td>
-                  <td class="col-data-content">{{l.dataVencimento}}</td>
-                  <td class="col-data-content">{{l.dataPagamento}}</td>
+                  <td class="col-data-content">{{l.dataVencimento | date:'dd/MM/yyyy'}}</td>
+                  <td class="col-data-content">{{l.dataPagamento | date:'dd/MM/yyyy'}}</td>
                   <td class="col-valor-content">
                     <span [style.color]= "l.tipo == 'DESPESA' ? 'red' : 'blue'">
-                        {{l.valor}}
+                        {{l.valor | currency:'BRL'}}
                       </span>
                   </td>
                   <td class="col-acoes">
