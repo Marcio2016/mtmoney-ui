@@ -1,6 +1,7 @@
 import { BrowserModule } from '@angular/platform-browser';
-import { NgModule } from '@angular/core';
 import {BrowserAnimationsModule} from '@angular/platform-browser/animations';
+import { FormsModule } from '@angular/forms';
+import { NgModule } from '@angular/core';
 
 import { AppComponent } from './app.component';
 
@@ -16,6 +17,7 @@ import { InputTextareaModule } from  'primeng/inputtextarea';
 import {CalendarModule} from 'primeng/calendar';
 import {SelectButtonModule} from 'primeng/selectbutton';
 import {DropdownModule} from 'primeng/dropdown';
+import {InputMaskModule} from 'primeng/inputmask';
 
 
 
@@ -24,6 +26,10 @@ import { LacamentosPesquisaComponent } from './lacamentos-pesquisa/lacamentos-pe
 import { NavbarComponent } from './navbar/navbar.component';
 import { PessoasPesquisaComponent } from './pessoas-pesquisa/pessoas-pesquisa.component';
 import { LancamentoCadastroComponent } from './lancamento-cadastro/lancamento-cadastro.component';
+import { PessoaCadastroComponent } from './pessoa-cadastro/pessoa-cadastro.component';
+import { MessageComponent } from './message/message.component';
+import { PessoasGridComponent } from './pessoas-grid/pessoas-grid.component';
+import { LancamentosGridComponent } from './lancamentos-grid/lancamentos-grid.component';
 
 @NgModule({
   declarations: [
@@ -32,11 +38,16 @@ import { LancamentoCadastroComponent } from './lancamento-cadastro/lancamento-ca
     NavbarComponent,
     PessoasPesquisaComponent,
     LancamentoCadastroComponent,
+    PessoaCadastroComponent,
+    MessageComponent,
+    PessoasGridComponent,
+    LancamentosGridComponent,
     
   ],
   imports: [
     BrowserModule,
     BrowserAnimationsModule,
+    FormsModule,
     ButtonModule,
     InputTextModule,
     TableModule,
@@ -45,6 +56,7 @@ import { LancamentoCadastroComponent } from './lancamento-cadastro/lancamento-ca
     CalendarModule,
     SelectButtonModule,
     DropdownModule,
+    InputMaskModule,
     CurrencyMaskModule
     
   ],
