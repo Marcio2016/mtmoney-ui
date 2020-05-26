@@ -43,7 +43,7 @@
                   <td class="col-data-content">{{l.dataPagamento | date:'dd/MM/yyyy'}}</td>
                   <td class="col-valor-content">
                     <span [style.color]= "l.tipo == 'DESPESA' ? 'red' : 'blue'">
-                        {{l.valor | currency:'BRL'}}
+                        {{l.valor | number:'1.2-2'}}
                       </span>
                   </td>
                   <td class="col-acoes">
