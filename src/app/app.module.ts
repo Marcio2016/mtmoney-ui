@@ -1,4 +1,3 @@
-import { LancametoService } from './lancamentos/lancameto.service';
 import { BrowserModule } from '@angular/platform-browser';
 import {BrowserAnimationsModule} from '@angular/platform-browser/animations';
 import { FormsModule } from '@angular/forms';
@@ -12,6 +11,9 @@ import { LancamentosModule } from './lancamentos/lancamentos.module';
 import { PessoasModule } from './pessoas/pessoas.module';
 import { CoreModule } from './core/core.module';
 
+//Service
+import { AuthenticationService } from './authentications/authentication.service';
+import { LancametoService } from './lancamentos/lancameto.service';
 
 @NgModule({
   declarations: [
@@ -27,7 +29,7 @@ import { CoreModule } from './core/core.module';
     PessoasModule,
     CoreModule
   ],
-  providers: [LancametoService],
+  providers: [LancametoService,AuthenticationService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
