@@ -1,4 +1,4 @@
-import { LancametoService } from './../lancameto.service';
+import { LancametoService, LancamentoFiltro } from './../lancameto.service';
 import { Component, OnInit } from '@angular/core';
 
 
@@ -8,6 +8,9 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./lacamentos-pesquisa.component.css']
 })
 export class LacamentosPesquisaComponent implements OnInit  {
+  
+  dataVencimentoInicio: Date;
+  dataVencimentoFim: Date;
   descricao: string;
   lancamentos = [
 
@@ -20,7 +23,14 @@ export class LacamentosPesquisaComponent implements OnInit  {
   }
 
   pesquisar(){
-    this.lancamentoService.pesquisar({ descricao: this.descricao })
+
+    const filtro: LancamentoFiltro = {
+      descricao: this.descricao,
+      dataVencimentoInicio: this.dataVencimentoInicio,
+      dataVencimentoFim: this.dataVencimentoFim
+    };
+
+    this.lancamentoService.pesquisar(filtro)
     .then(lancamentos => this.lancamentos = lancamentos);
   }
 }

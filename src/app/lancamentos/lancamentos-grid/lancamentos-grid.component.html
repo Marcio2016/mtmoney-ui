@@ -1,6 +1,9 @@
 <p-table [value]="lancamentos" [paginator]="true" [responsive]="true" [rows]="4">
+  <ng-template pTemplate="emptymessage">
+    Nenhum lançamento encontrado
+  </ng-template>
   <ng-template pTemplate="header">
-      <tr>
+      <tr>        
           <th>Pessoa</th>
           <th>Descrição</th>
           <th class="col-data-header">Vencimento</th>
@@ -10,7 +13,7 @@
       </tr>
   </ng-template>
   <ng-template pTemplate="body" let-l>
-      <tr>
+      <tr>        
           <td>{{l.pessoa}}</td>
           <td>{{l.descricao}}</td>
           <td class="col-data-content">{{l.dataVencimento | date:'dd/MM/yyyy'}}</td>

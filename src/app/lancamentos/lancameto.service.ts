@@ -1,8 +1,15 @@
 import { HttpClient, HttpHeaders, HttpParams } from '@angular/common/http';
 import { Injectable,} from '@angular/core';
+
 import 'rxjs/add/operator/toPromise';
 
-import { AuthenticationService } from 'src/app/authentications/authentication.service';
+import * as moment from 'moment';
+
+export interface LancamentoFiltro {
+  descricao: string;
+  dataVencimentoInicio: Date;
+  dataVencimentoFim: Date;
+}
 
 @Injectable({
   providedIn: 'root'
@@ -10,8 +17,7 @@ import { AuthenticationService } from 'src/app/authentications/authentication.se
 export class LancametoService  {
   lancamentosUrl = "http://localhost:8080/lancamentos"; 
   
-  constructor(private http:  HttpClient,
-              private autenticacao: AuthenticationService) { }
+  constructor(private http:  HttpClient) { }
  
   
               
@@ -21,6 +27,14 @@ export class LancametoService  {
     
     if(filtro.descricao){
       params = params.set('descricao', filtro.descricao);
+    }
+
+    if (filtro.dataVencimentoInicio) {
+      params = params.set('dataVencimentoDe', moment(filtro.dataVencimentoInicio).format('YYYY-MM-DD'));
+    }
+  
+    if (filtro.dataVencimentoFim) {
+      params = params.set('dataVencimentoAte', moment(filtro.dataVencimentoFim).format('YYYY-MM-DD'));
     }
 
     return this.http.get(`${this.lancamentosUrl}?resumo`, {headers: headers, params})
