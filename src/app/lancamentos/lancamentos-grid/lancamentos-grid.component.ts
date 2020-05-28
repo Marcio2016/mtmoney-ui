@@ -7,7 +7,7 @@ import { Component, OnInit, Input } from '@angular/core';
 })
 export class LancamentosGridComponent  {
 
-  @Input() lancamentos;
+  @Input() lancamentos;  
   constructor() { }
 
   

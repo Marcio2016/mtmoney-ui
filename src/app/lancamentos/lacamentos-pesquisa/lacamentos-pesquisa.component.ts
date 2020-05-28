@@ -1,5 +1,7 @@
-import { LancametoService, LancamentoFiltro } from './../lancameto.service';
 import { Component, OnInit } from '@angular/core';
+
+import { LancametoService, LancamentoFiltro } from './../lancameto.service';
+import { LazyLoadEvent } from 'primeng/api/lazyloadevent';
 
 
 @Component({
@@ -8,10 +10,8 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./lacamentos-pesquisa.component.css']
 })
 export class LacamentosPesquisaComponent implements OnInit  {
-  
-  dataVencimentoInicio: Date;
-  dataVencimentoFim: Date;
-  descricao: string;
+  totalRegistros = 0;
+  filtro = new LancamentoFiltro();
   lancamentos = [
 
   ];
@@ -22,15 +22,17 @@ export class LacamentosPesquisaComponent implements OnInit  {
     this.pesquisar();
   }
 
-  pesquisar(){
+  pesquisar(pagina = 0){   
+    this.filtro.pagina = pagina;
 
-    const filtro: LancamentoFiltro = {
-      descricao: this.descricao,
-      dataVencimentoInicio: this.dataVencimentoInicio,
-      dataVencimentoFim: this.dataVencimentoFim
-    };
+    this.lancamentoService.pesquisar(this.filtro)
+    .then(resultado => {
+      this.totalRegistros = resultado.total;
+      this.lancamentos = resultado.lancamentos});
+  }
 
-    this.lancamentoService.pesquisar(filtro)
-    .then(lancamentos => this.lancamentos = lancamentos);
+  aoMudarPagina(event: LazyLoadEvent) {
+    const pagina = event.first / event.rows;
+    this.pesquisar(pagina);
   }
 }
